@@ -1,8 +1,7 @@
 package com.mohsenoid
 
-
 fun main() {
-    println("Hello pi!")
+    println("Hello mac!")
 
     val morse = Morse(Driver())
 

@@ -10,9 +10,8 @@ repositories {
 }
 
 kotlin {
-    val nativeTarget = linuxArm32Hfp()
-
-    nativeTarget.apply {
+    val raspberryPiTarget = linuxArm32Hfp()
+    raspberryPiTarget.apply {
         binaries {
             executable {
                 entryPoint = "com.mohsenoid.main"
@@ -27,8 +26,28 @@ kotlin {
         }
     }
 
+    val macTarget = macosArm64()
+    macTarget.apply {
+        binaries {
+            executable {
+                entryPoint = "com.mohsenoid.main"
+                linkerOpts("-Llibs/pigpio", "-lpigpio")
+            }
+        }
+    }
+
     sourceSets {
+        val macosArm64Main by getting
+        val macosArm64Test by getting
+
         val linuxArm32HfpMain by getting
         val linuxArm32HfpTest by getting
+
+        val commonMain by getting {
+            dependencies {
+                implementation(kotlin("stdlib"))
+            }
+        }
+        val commonTest by getting
     }
 }
