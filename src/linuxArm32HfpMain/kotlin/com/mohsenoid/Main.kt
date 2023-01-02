@@ -2,7 +2,7 @@ package com.mohsenoid
 
 import pi.gpio.*
 
-const val GPIO_LED = 8
+const val GPIO_LED = 14
 
 fun main() {
     println("Hello world!")
