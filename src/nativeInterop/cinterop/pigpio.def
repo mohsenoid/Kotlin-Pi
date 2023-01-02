@@ -1,0 +1,2 @@
+headers = pigpio.h
+package = pi.gpio
